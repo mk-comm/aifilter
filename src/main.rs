@@ -1,16 +1,14 @@
-use axum::response::IntoResponse;
 use axum::routing::get;
-use axum::Json;
 use axum::Router;
-use serde_json::json;
-async fn index() -> impl IntoResponse {
-    Json(json!({
-    "message": "Hello World!"
-    }))
-}
+
+use crate::endpoints::index;
+
+mod endpoints;
 
 #[tokio::main]
 async fn main() {
+    //test
+
     tracing_subscriber::fmt::init();
     let port = match std::env::var("PORT") {
         Ok(val) => val,
